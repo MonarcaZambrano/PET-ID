@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PetID — Identificación para mascotas</title>
+  <meta name="description" content="Solicita una credencial PetID, perfil digital y tag QR para tu mascota.">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="./">
+      <span class="brand-mark">🐾</span>
+      <span><strong>PetID</strong><span>Identidad · Registro · Contacto</span></span>
+    </a>
+    <nav class="nav" aria-label="Navegación principal">
+      <a href="#productos">Productos</a>
+      <a href="#solicitud">Crear solicitud</a>
+      <a href="profile.html?slug=demo-luna">Probar QR</a>
+      <a href="admin.html">Administrador</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Prototipo de desarrollo interno</span>
+        <h1>Una identificación que acompaña a tu mascota.</h1>
+        <p class="lead">Completa los datos, sube su fotografía y selecciona los estilos que prefieres. Después del pago, PetID prepara las propuestas finales para impresión, despacho o entrega digital.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#solicitud">Crear una solicitud</a>
+          <a class="btn btn-outline" href="profile.html?slug=demo-luna">Ver perfil escaneable</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <ul class="feature-list">
+          <li><span class="dot">1</span><span><b>Credencial física</b><br><span class="muted">Diseñada a partir de 10 plantillas PetID.</span></span></li>
+          <li><span class="dot">2</span><span><b>Perfil digital</b><br><span class="muted">El mismo QR abre los datos públicos autorizados.</span></span></li>
+          <li><span class="dot">3</span><span><b>Tag para collar</b><br><span class="muted">Placa QR para ayudar a contactar a la familia.</span></span></li>
+        </ul>
+        <div class="notice warning" style="margin-top:18px">Esta versión funciona en modo demostración. Las solicitudes quedan guardadas solamente en este navegador hasta conectar Supabase y el sistema de pagos.</div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" id="productos">
+    <div class="wrap">
+      <div class="section-header">
+        <div><span class="eyebrow">Modalidades</span><h2>Elige cómo quieres recibir tu PetID</h2></div>
+        <p>Los valores son configurables y todavía no están publicados. El prototipo registra la modalidad seleccionada para continuar el flujo desde administración.</p>
+      </div>
+      <div class="grid-3" id="productGrid">
+        <label class="product-card selected" data-product-card>
+          <input type="radio" name="product" value="kit-fisico" checked>
+          <span class="badge info">Producto principal</span>
+          <h3 style="margin-top:14px">Kit PetID físico</h3>
+          <p class="muted">Credencial, perfil digital y tag QR para el collar.</p>
+          <ul><li>Diseño revisado</li><li>Producto impreso</li><li>Activación del perfil</li><li>Despacho o retiro</li></ul>
+          <div class="price">Valor por definir</div>
+        </label>
+        <label class="product-card" data-product-card>
+          <input type="radio" name="product" value="digital-imprimible">
+          <span class="badge">Para regiones</span>
+          <h3 style="margin-top:14px">PetID digital imprimible</h3>
+          <p class="muted">Archivo final en alta resolución para imprimir localmente.</p>
+          <ul><li>Perfil digital activo</li><li>QR definitivo</li><li>PDF/PNG aprobado</li><li>Sin despacho físico</li></ul>
+          <div class="price">Valor por definir</div>
+        </label>
+        <label class="product-card" data-product-card>
+          <input type="radio" name="product" value="perfil-digital">
+          <span class="badge">Entrada económica</span>
+          <h3 style="margin-top:14px">Perfil PetID</h3>
+          <p class="muted">Registro digital y QR para imprimir como adhesivo o tag.</p>
+          <ul><li>Perfil público</li><li>Modo extraviado</li><li>Contacto autorizado</li><li>Compra física posterior</li></ul>
+          <div class="price">Valor por definir</div>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="solicitud">
+    <div class="wrap">
+      <div class="section-header">
+        <div><span class="eyebrow">Solicitud pública</span><h2>Cuéntanos sobre tu mascota</h2></div>
+        <p>El cliente elige hasta tres estilos preferidos. La vista previa lleva marca de agua y no contiene el QR definitivo.</p>
+      </div>
+
+      <div class="grid-2" style="align-items:start">
+        <form class="panel" id="requestForm" novalidate>
+          <div class="panel-head"><h3>Datos para preparar la propuesta</h3><span class="badge warning">Pago pendiente</span></div>
+          <div class="panel-body">
+            <div class="form-grid">
+              <div class="field full"><label for="photo">Fotografía de la mascota</label><input id="photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp"><div class="help">JPG, PNG o WebP. Máximo 8 MB. La imagen se comprime en este prototipo.</div></div>
+              <div class="field"><label for="petName">Nombre de la mascota *</label><input id="petName" name="petName" required maxlength="50" value="Max"></div>
+              <div class="field"><label for="petType">Tipo</label><select id="petType" name="petType"><option>Perro</option><option>Perra</option><option>Gato</option><option>Gata</option><option>Mascota</option></select></div>
+              <div class="field"><label for="sex">Sexo</label><select id="sex" name="sex"><option>Macho</option><option>Hembra</option><option>No especificado</option></select></div>
+              <div class="field"><label for="breed">Raza</label><input id="breed" name="breed" maxlength="80" value="Rottweiler"></div>
+              <div class="field"><label for="birth">Fecha de nacimiento</label><input id="birth" name="birth" type="date" value="2021-04-12"></div>
+              <div class="field"><label for="title">Título o personalidad</label><select id="title" name="title"></select></div>
+              <div class="field full"><label for="characteristics">Características físicas</label><textarea id="characteristics" name="characteristics" maxlength="400" placeholder="Color, manchas, tamaño u otras características útiles."></textarea></div>
+
+              <div class="field"><label for="owner">Nombre del responsable *</label><input id="owner" name="owner" required maxlength="100"></div>
+              <div class="field"><label for="phone">Teléfono *</label><input id="phone" name="phone" required maxlength="30" placeholder="+56 9..."></div>
+              <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" name="whatsapp" maxlength="30" placeholder="+56 9..."></div>
+              <div class="field"><label for="email">Correo electrónico *</label><input id="email" name="email" required type="email" maxlength="120"></div>
+              <div class="field"><label for="city">Ciudad o comuna *</label><input id="city" name="city" required maxlength="100"></div>
+              <div class="field"><label for="delivery">Entrega</label><select id="delivery" name="delivery"><option value="despacho">Despacho</option><option value="retiro">Retiro presencial</option><option value="digital">Entrega digital</option></select></div>
+              <div class="field full"><label for="medicalNotes">Información médica autorizada</label><textarea id="medicalNotes" name="medicalNotes" maxlength="500" placeholder="Medicamentos, alergias o cuidados importantes."></textarea></div>
+              <div class="field full"><label for="behaviorNotes">Indicaciones de comportamiento</label><textarea id="behaviorNotes" name="behaviorNotes" maxlength="500" placeholder="Por ejemplo: es asustadizo, no intentar cargarlo, se acerca con comida."></textarea></div>
+            </div>
+
+            <h3 style="margin-top:24px">Privacidad del perfil QR</h3>
+            <label class="check-row"><input type="checkbox" id="showOwnerName"><span>Mostrar nombre del responsable.</span></label>
+            <label class="check-row"><input type="checkbox" id="showPhone" checked><span>Mostrar botón para llamar.</span></label>
+            <label class="check-row"><input type="checkbox" id="showWhatsapp" checked><span>Mostrar botón de WhatsApp.</span></label>
+            <label class="check-row"><input type="checkbox" id="showEmail"><span>Mostrar correo electrónico.</span></label>
+            <label class="check-row"><input type="checkbox" id="showCity" checked><span>Mostrar ciudad o comuna.</span></label>
+            <label class="check-row"><input type="checkbox" id="showMedicalNotes" checked><span>Mostrar información médica ingresada.</span></label>
+            <label class="check-row"><input type="checkbox" id="showBehaviorNotes" checked><span>Mostrar indicaciones de comportamiento.</span></label>
+
+            <h3 style="margin-top:24px">Tus estilos preferidos</h3>
+            <p class="muted small">Selecciona hasta tres. PetID preparará las propuestas finales después de confirmar el pago.</p>
+            <div class="template-grid" id="templateChoices"></div>
+            <div class="notice warning hidden" id="templateLimit" style="margin-top:12px">Puedes seleccionar un máximo de tres estilos.</div>
+
+            <label class="check-row" style="margin-top:18px"><input type="checkbox" id="consent" required><span>Acepto que estos datos se utilicen para preparar la solicitud PetID. Entiendo que el perfil público mostrará solamente la información autorizada.</span></label>
+            <div class="actions" style="margin-top:18px"><button class="btn btn-primary" type="submit">Guardar solicitud</button><button class="btn btn-outline" type="reset" id="resetRequest">Limpiar</button></div>
+            <div id="requestResult" class="notice success hidden" style="margin-top:16px"></div>
+          </div>
+        </form>
+
+        <div class="preview-stack">
+          <section class="panel">
+            <div class="panel-head"><h3>Vista preliminar protegida</h3><span class="badge">No imprimible</span></div>
+            <div class="panel-body">
+              <div class="credential-stage">
+                <article class="credential theme-guardian" id="customerCredential">
+                  <div class="watermark-preview">MUESTRA · NO VÁLIDA</div>
+                  <div class="credential-inner">
+                    <div class="card-kicker">PetID · Registro Digital</div>
+                    <div class="card-title">Credencial Mascota</div>
+                    <div class="photo-frame"><div class="photo-placeholder" id="customerPhotoPlaceholder">📷<span>Sube una foto</span></div><img id="customerPhoto" alt="Fotografía de la mascota" class="hidden"></div>
+                    <div class="nameplate"><div class="pet-name" id="customerName">MAX</div><div class="pet-type" id="customerType">Perro · Macho</div></div>
+                    <div class="info-list">
+                      <div class="info-row"><b>ID:</b> Se asigna al confirmar</div>
+                      <div class="info-row"><b>Raza:</b> <span id="customerBreed">Rottweiler</span></div>
+                      <div class="info-row"><b>Responsable:</b> <span id="customerOwner">Pendiente</span></div>
+                    </div>
+                    <div class="card-footer">Vista preliminar · QR definitivo oculto</div>
+                  </div>
+                </article>
+              </div>
+              <div class="notice info" style="margin-top:16px">No existe una forma absoluta de impedir capturas de pantalla en la web. Esta vista reduce su utilidad con baja resolución, marca de agua y sin el QR definitivo.</div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer"><div class="wrap">PetID — prototipo preparado para GitHub, Cloudflare Pages y futura conexión con Supabase.</div></footer>
+<script src="vendor/petid-qr.min.js"></script>
+<script src="js/shared.js"></script>
+<script src="js/customer.js"></script>
+</body>
+</html>
