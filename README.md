@@ -45,7 +45,7 @@ Abrir:
 
 - Portal público: `http://localhost:4173/`
 - Administrador: `http://localhost:4173/admin.html`
-- Perfil QR demo: `http://localhost:4173/p/demo-luna`
+- Perfil QR demo: `http://localhost:4173/profile.html?slug=demo-luna`
 
 ## Generar carpeta de publicación
 

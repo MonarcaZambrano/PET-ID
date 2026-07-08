@@ -12,7 +12,7 @@ PETID ONLINE MVP — PAQUETE PARA CODEX
 Rutas de prueba:
 - /
 - /admin.html
-- /p/demo-luna
+- /profile.html?slug=demo-luna
 
 IMPORTANTE:
 - No hay imágenes nuevas generadas.

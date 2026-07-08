@@ -118,7 +118,12 @@
     requests.unshift(request);
     P.write(P.CONFIG.storageKeys.requests, requests);
 
-    result.innerHTML = `<b>Solicitud ${P.escapeHtml(request.requestId)} guardada.</b><br>En la versión productiva, el siguiente paso será el pago y el envío de propuestas privadas. Puedes abrir el administrador en este mismo navegador para continuar la prueba.`;
+    result.innerHTML = `
+      <b>Solicitud ${P.escapeHtml(request.requestId)} guardada.</b><br>
+      Para continuar la prueba, abre el administrador en este mismo navegador y carga esta solicitud.
+      <div class="actions" style="margin-top:12px">
+        <a class="btn btn-primary" href="${P.appPath('admin.html')}">Abrir administrador</a>
+      </div>`;
     result.classList.remove('hidden');
     result.scrollIntoView({ behavior: 'smooth', block: 'center' });
   });

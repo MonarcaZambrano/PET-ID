@@ -20,7 +20,7 @@ Se comprobó respuesta HTTP 200 para:
 
 - `/`.
 - `/admin.html`.
-- `/p/demo-luna`.
+- `/profile.html?slug=demo-luna`.
 
 ## Pendiente de prueba manual
 

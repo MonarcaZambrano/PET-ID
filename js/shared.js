@@ -34,6 +34,29 @@
     'La leyenda'
   ];
 
+  function appBasePath() {
+    try {
+      const scriptUrl = new URL(document.currentScript?.src || '', location.href);
+      const match = scriptUrl.pathname.match(/^(.*)\/js\/shared\.js$/);
+      return match?.[1] === '/' ? '' : (match?.[1] || '');
+    } catch {
+      return '';
+    }
+  }
+
+  function appPath(path = '') {
+    const normalized = String(path).replace(/^\//, '');
+    const base = appBasePath();
+    return normalized ? `${base}/${normalized}` : `${base || '.'}/`;
+  }
+
+  function runtimePublicSiteUrl() {
+    if (/^https?:$/.test(location.protocol)) {
+      return `${location.origin}${appBasePath()}`.replace(/\/$/, '');
+    }
+    return CONFIG.publicSiteUrl.replace(/\/$/, '');
+  }
+
   function read(key, fallback = []) {
     try {
       const parsed = JSON.parse(localStorage.getItem(key) || 'null');
@@ -77,7 +100,8 @@
   }
 
   function buildPublicPetUrl(publicSlug) {
-    return `${CONFIG.publicSiteUrl.replace(/\/$/, '')}/p/${encodeURIComponent(publicSlug)}`;
+    const slug = encodeURIComponent(publicSlug);
+    return `${runtimePublicSiteUrl()}/profile.html?slug=${slug}`;
   }
 
   const publicPetUrl = buildPublicPetUrl;
@@ -247,6 +271,8 @@
     slug,
     nextPetId,
     nextRequestId,
+    appBasePath,
+    appPath,
     buildPublicPetUrl,
     publicPetUrl,
     formatDate,
