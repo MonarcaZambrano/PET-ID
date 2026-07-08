@@ -1,0 +1,22 @@
+PETID ONLINE MVP — PAQUETE PARA CODEX
+
+1. Entregue este ZIP completo a Codex.
+2. Pídale que lea primero: docs/PROMPT_CODEX.md
+3. Para probar localmente:
+   npm run check
+   npm run dev
+4. Para generar la versión publicable:
+   npm run build
+5. La carpeta dist/ ya viene generada y puede usarse como referencia de publicación.
+
+Rutas de prueba:
+- /
+- /admin.html
+- /p/demo-luna
+
+IMPORTANTE:
+- No hay imágenes nuevas generadas.
+- Las fotografías solo aparecen cuando el usuario las carga.
+- La versión actual usa localStorage y es demostrativa.
+- Antes de imprimir QR reales se debe conectar Supabase.
+- El administrador debe protegerse con autenticación real y Cloudflare Access.

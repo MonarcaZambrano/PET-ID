@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PetID — Administración</title>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<header class="site-header no-print">
+  <div class="wrap">
+    <a class="brand" href="/"><span class="brand-mark">🐾</span><span><strong>PetID Admin</strong><span>Producción y registro</span></span></a>
+    <nav class="nav"><a href="/">Portal público</a><a href="/p/demo-luna">Perfil QR demo</a></nav>
+  </div>
+</header>
+
+<main class="section">
+  <div class="wrap">
+    <div class="notice warning no-print" style="margin-bottom:18px"><b>Entorno de demostración.</b> Este panel no tiene autenticación real y guarda datos solo en el navegador. Antes de publicarlo debe protegerse con Supabase Auth y Cloudflare Access.</div>
+
+    <div class="layout-admin">
+      <div class="sidebar-stack no-print">
+        <section class="panel">
+          <div class="panel-head"><h3>Solicitudes recibidas</h3><span class="badge" id="requestCount">0</span></div>
+          <div class="panel-body">
+            <div class="field"><label for="requestSearch">Buscar</label><input id="requestSearch" placeholder="Solicitud, mascota, dueño o teléfono"></div>
+            <div class="table-wrap" style="margin-top:12px;max-height:340px"><table><thead><tr><th>Solicitud</th><th>Mascota</th><th>Pago</th><th></th></tr></thead><tbody id="requestsTable"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head"><h3>Editor de registro</h3><span class="badge info" id="editorStatus">Nuevo</span></div>
+          <div class="panel-body">
+            <form id="adminForm">
+              <div class="form-grid">
+                <div class="field full"><label for="adminPhoto">Fotografía</label><input id="adminPhoto" type="file" accept="image/jpeg,image/png,image/webp"></div>
+                <div class="field"><label for="petId">ID PetID</label><input id="petId" readonly></div>
+                <div class="field"><label for="publicSlug">Slug público</label><input id="publicSlug" readonly></div>
+                <div class="field"><label for="name">Nombre *</label><input id="name" required maxlength="50"></div>
+                <div class="field"><label for="petType">Tipo</label><select id="petType"><option>Perro</option><option>Perra</option><option>Gato</option><option>Gata</option><option>Mascota</option></select></div>
+                <div class="field"><label for="sex">Sexo</label><select id="sex"><option>Macho</option><option>Hembra</option><option>No especificado</option></select></div>
+                <div class="field"><label for="breed">Raza</label><input id="breed" maxlength="80"></div>
+                <div class="field"><label for="birth">Nacimiento</label><input id="birth" type="date"></div>
+                <div class="field"><label for="title">Título</label><select id="title"></select></div>
+                <div class="field"><label for="owner">Responsable *</label><input id="owner" required maxlength="100"></div>
+                <div class="field"><label for="phone">Teléfono</label><input id="phone" maxlength="30"></div>
+                <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" maxlength="30"></div>
+                <div class="field"><label for="email">Correo</label><input id="email" type="email" maxlength="120"></div>
+                <div class="field"><label for="city">Ciudad/comuna</label><input id="city" maxlength="100"></div>
+                <div class="field"><label for="paymentStatus">Pago</label><select id="paymentStatus"><option value="pendiente">Pendiente</option><option value="verificando">Verificando</option><option value="pagado">Pagado</option><option value="rechazado">Rechazado</option></select></div>
+                <div class="field"><label for="productionStatus">Producción</label><select id="productionStatus"><option value="solicitud-recibida">Solicitud recibida</option><option value="en-diseno">En diseño</option><option value="propuesta-enviada">Propuesta enviada</option><option value="correccion-solicitada">Corrección solicitada</option><option value="aprobada">Diseño aprobado</option><option value="en-produccion">En producción</option><option value="enviada">Enviada</option><option value="entregada">Entregada</option></select></div>
+                <div class="field full"><label for="medicalNotes">Información médica</label><textarea id="medicalNotes"></textarea></div>
+                <div class="field full"><label for="behaviorNotes">Comportamiento</label><textarea id="behaviorNotes"></textarea></div>
+                <div class="field full"><label for="internalNotes">Notas internas</label><textarea id="internalNotes"></textarea></div>
+              </div>
+
+              <h3 style="margin-top:22px">Estado público</h3>
+              <label class="check-row"><input type="checkbox" id="isPublic" checked><span>Perfil público activo.</span></label>
+              <label class="check-row"><input type="checkbox" id="isLost"><span>Marcar como mascota extraviada.</span></label>
+              <div id="lostFields" class="form-grid hidden">
+                <div class="field"><label for="lostSince">Extraviada desde</label><input id="lostSince" type="date"></div>
+                <div class="field"><label for="lastSeenLocation">Último lugar visto</label><input id="lastSeenLocation"></div>
+                <div class="field full"><label for="lostMessage">Mensaje público</label><textarea id="lostMessage"></textarea></div>
+                <div class="field full"><label for="rewardText">Recompensa opcional</label><input id="rewardText"></div>
+              </div>
+
+              <h3 style="margin-top:22px">Privacidad</h3>
+              <label class="check-row"><input type="checkbox" id="showOwnerName"><span>Mostrar responsable</span></label>
+              <label class="check-row"><input type="checkbox" id="showPhone" checked><span>Mostrar llamada</span></label>
+              <label class="check-row"><input type="checkbox" id="showWhatsapp" checked><span>Mostrar WhatsApp</span></label>
+              <label class="check-row"><input type="checkbox" id="showEmail"><span>Mostrar correo</span></label>
+              <label class="check-row"><input type="checkbox" id="showCity" checked><span>Mostrar ciudad</span></label>
+              <label class="check-row"><input type="checkbox" id="showMedicalNotes" checked><span>Mostrar información médica</span></label>
+              <label class="check-row"><input type="checkbox" id="showBehaviorNotes" checked><span>Mostrar comportamiento</span></label>
+
+              <div class="actions"><button class="btn btn-primary" type="submit">Guardar registro</button><button class="btn btn-outline" type="button" id="newRecord">Nuevo</button></div>
+              <div id="saveMessage" class="notice success hidden" style="margin-top:14px"></div>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <div class="preview-stack">
+        <section class="panel">
+          <div class="panel-head"><h3>10 tarjetas predefinidas</h3><span class="badge">Diseños recuperados</span></div>
+          <div class="panel-body"><div class="template-grid no-print" id="adminTemplates"></div></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head"><h3>Vista imprimible</h3><div class="actions no-print"><button class="btn btn-secondary" id="printCredential" type="button">Imprimir / PDF</button><a class="btn btn-outline" id="openPublic" target="_blank" rel="noopener">Abrir perfil</a></div></div>
+          <div class="panel-body">
+            <div class="credential-stage" id="credentialPrintArea">
+              <article class="credential theme-guardian" id="frontCard">
+                <div class="credential-inner">
+                  <div class="card-kicker">PetID · Registro Digital</div><div class="card-title">Credencial Mascota</div>
+                  <div class="photo-frame"><div class="photo-placeholder" id="frontPlaceholder">📷<span>Sin fotografía</span></div><img id="frontPhoto" class="hidden" alt="Foto mascota"></div>
+                  <div class="nameplate"><div class="pet-name" id="frontName">SIN NOMBRE</div><div class="pet-type" id="frontType">Mascota</div></div>
+                  <div class="info-list">
+                    <div class="info-row"><b>ID:</b> <span id="frontId"></span></div>
+                    <div class="info-row"><b>Nacimiento:</b> <span id="frontBirth"></span></div>
+                    <div class="info-row"><b>Raza:</b> <span id="frontBreed"></span></div>
+                    <div class="info-row"><b>Responsable:</b> <span id="frontOwner"></span></div>
+                  </div>
+                  <div class="card-footer">Identidad · Registro · Contacto</div>
+                </div>
+              </article>
+              <article class="credential theme-guardian" id="backCard">
+                <div class="credential-inner">
+                  <div class="back-title">Ficha de registro</div>
+                  <div class="back-list">
+                    <div class="back-item"><b>ID PetID</b><br><span id="backId"></span></div>
+                    <div class="back-item"><b>Contacto</b><br><span id="backPhone"></span></div>
+                    <div class="back-item"><b>Ciudad</b><br><span id="backCity"></span></div>
+                    <div class="back-item"><b>Personalidad</b><br><span id="backTitle"></span></div>
+                  </div>
+                  <div class="qr-box" id="credentialQr"></div>
+                  <div class="qr-caption">Escanea para contactar</div>
+                  <div class="card-footer" id="backUrl"></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel no-print">
+          <div class="panel-head"><h3>Ajuste de fotografía</h3><span class="badge">Sin filtros complejos</span></div>
+          <div class="panel-body photo-controls">
+            <div class="field"><label for="photoFit">Encuadre</label><select id="photoFit"><option value="cover">Cubrir marco</option><option value="contain">Ver completa</option></select></div>
+            <div class="range-row"><span>Zoom</span><input id="photoZoom" type="range" min="80" max="180" value="105"><span id="zoomValue">105%</span></div>
+            <div class="range-row"><span>Brillo</span><input id="photoBrightness" type="range" min="70" max="160" value="110"><span id="brightnessValue">110%</span></div>
+            <div class="range-row"><span>Horizontal</span><input id="photoX" type="range" min="0" max="100" value="50"><span id="xValue">50%</span></div>
+            <div class="range-row"><span>Vertical</span><input id="photoY" type="range" min="0" max="100" value="50"><span id="yValue">50%</span></div>
+            <button class="btn btn-outline" type="button" id="resetPhoto">Restablecer foto</button>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head"><h3>Tag QR para collar</h3><div class="actions no-print"><select id="tagShape"><option value="circular">Circular</option><option value="rounded">Rectangular</option><option value="bone">Medalla / hueso</option></select><button class="btn btn-secondary" type="button" id="printTag">Imprimir tag</button></div></div>
+          <div class="panel-body"><div class="tag-stage" id="tagPrintArea"><div class="tag circular" id="tagFront"><div><div class="front-name" id="tagName">PETID</div><div class="tag-copy">Escanéame</div></div></div><div class="tag circular" id="tagBack"><div><div class="tag-qr" id="tagQr"></div><div class="tag-copy" id="tagCode"></div></div></div></div><div class="notice warning no-print" style="margin-top:14px">Antes de fabricar, realiza una prueba física de escaneo. Un QR demasiado pequeño o con poca calidad puede fallar.</div></div>
+        </section>
+
+        <section class="panel no-print">
+          <div class="panel-head"><h3>Registros guardados</h3><span class="badge" id="petCount">0</span></div>
+          <div class="panel-body"><div class="field"><label for="petSearch">Buscar</label><input id="petSearch" placeholder="ID, mascota, responsable, teléfono o ciudad"></div><div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>ID</th><th>Mascota</th><th>Responsable</th><th>Estado</th><th></th></tr></thead><tbody id="petsTable"></tbody></table></div></div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="footer no-print"><div class="wrap">PetID Admin · prototipo local para continuar en Codex.</div></footer>
+<script src="/vendor/petid-qr.min.js"></script>
+<script src="/js/shared.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

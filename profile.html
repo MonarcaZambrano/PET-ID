@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PetID — Perfil de mascota</title>
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<main class="public-shell">
+  <div class="notice info" style="margin-bottom:14px"><b>Perfil PetID de demostración.</b> La versión final consultará Supabase para que funcione desde cualquier dispositivo.</div>
+  <article class="public-card" id="publicCard">
+    <div id="lostBanner" class="lost-banner hidden"></div>
+    <div class="public-hero">
+      <div class="public-photo"><span id="publicPhotoPlaceholder">🐾</span><img id="publicPhoto" class="hidden" alt="Foto de la mascota"></div>
+      <div><span class="badge" id="publicCode"></span><h1 class="public-name" id="publicName">Mascota</h1><p id="publicType" style="margin:0;opacity:.85"></p></div>
+    </div>
+    <div class="public-body">
+      <p id="publicMessage" class="lead" style="font-size:16px"></p>
+      <div class="public-details" id="publicDetails"></div>
+      <div class="actions" id="contactActions" style="margin-top:18px"></div>
+      <div id="lostDetails" class="notice warning hidden" style="margin-top:18px"></div>
+      <form class="found-form" id="foundForm">
+        <h3>Encontré a esta mascota</h3>
+        <p class="muted small">Envía un mensaje de contacto. En producción, este aviso llegará al responsable sin exponer datos privados adicionales.</p>
+        <div class="form-grid">
+          <div class="field"><label for="finderName">Tu nombre</label><input id="finderName" maxlength="80"></div>
+          <div class="field"><label for="finderPhone">Tu teléfono</label><input id="finderPhone" maxlength="30"></div>
+          <div class="field full"><label for="finderMessage">Mensaje *</label><textarea id="finderMessage" required maxlength="500" placeholder="Indica dónde la viste o cómo pueden contactarte."></textarea></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Registrar aviso</button>
+        <div id="finderResult" class="notice success hidden"></div>
+      </form>
+    </div>
+  </article>
+  <div id="notFound" class="notice warning hidden"><b>Perfil no encontrado o inactivo.</b><br>Comprueba el código QR o comunícate con PetID.</div>
+</main>
+<footer class="footer"><a href="/">PetID · Identidad y contacto para mascotas</a></footer>
+<script src="/js/shared.js"></script>
+<script src="/js/profile.js"></script>
+</body>
+</html>
