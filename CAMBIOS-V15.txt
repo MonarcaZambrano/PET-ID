@@ -12,3 +12,4 @@ CAMBIOS V15 PREMIUM
 - Se conserva el ajuste de foto: zoom, posicion, encuadre y brillo.
 - Se preservan los formatos de impresion: tag mini, estandar 54 x 85.6 mm y Premium XL 81 x 128.4 mm.
 - La entrega queda local/offline, sin servidor y sin dependencias externas.
+- Se amplio LEEME.txt con instrucciones de apertura directa y aclaracion de funciones simuladas.

@@ -1,14 +1,50 @@
 PET ID - VERSION LOCAL V15 PREMIUM
 
-Como abrir:
-1. Descomprime el ZIP.
+COMO ABRIR
+
+1. Descomprime completamente el ZIP.
 2. Abre el archivo "ABRIR PET ID - PAGINA LOCAL.html".
 3. Presiona el boton para entrar a la aplicacion.
 
-Esta version funciona de forma local en el computador. No necesita servidor ni internet para crear credenciales de prueba.
-Los datos se guardan en el navegador del computador donde se usa la aplicacion.
+SI EL TELEFONO BLOQUEA EL ENLACE LOCAL
 
-Importante:
-- Si se abre en otro computador, empieza con datos nuevos.
-- Para compartir los datos reales entre computadores se necesitara una base de datos en linea, por ejemplo Supabase, en una etapa posterior.
-- Esta entrega incluye las dos plantillas premium: perro y gato.
+Algunos telefonos o navegadores bloquean los enlaces entre archivos locales. Si ocurre eso:
+
+1. Entra a la carpeta descomprimida.
+2. Abre directamente el archivo "PET-ID-APLICACION-LOCAL.html".
+3. Usa la aplicacion desde ese archivo.
+
+QUE FUNCIONA DE FORMA REAL
+
+- Creacion de mascotas de prueba.
+- Credenciales premium de perro y gato.
+- Foto con ajuste de zoom, posicion, encuadre y brillo.
+- Vista de administracion local.
+- Portal del propietario local.
+- Generacion visual de QR.
+- Impresion de tag, credencial estandar y Premium XL.
+- Guardado local en el navegador.
+
+QUE ES SIMULADO
+
+- Pagos.
+- Correos.
+- Notificaciones.
+- Conexiones.
+- PetID Linaje.
+- Acceso publico real por QR.
+- WhatsApp automatico.
+- Base de datos en linea.
+
+IMPORTANTE SOBRE LOS DATOS
+
+Esta version no usa servidor, Supabase ni base de datos externa.
+Los datos quedan guardados solamente en el navegador del computador o telefono donde se usa la aplicacion.
+
+Si se abre en otro computador, empieza con datos nuevos.
+Para compartir datos reales entre computadores se necesitara una base de datos en linea en una etapa posterior.
+
+PLANTILLAS INCLUIDAS
+
+- Perro - Base Premium.
+- Gato - Base Premium.
