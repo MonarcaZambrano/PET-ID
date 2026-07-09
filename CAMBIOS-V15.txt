@@ -1,0 +1,14 @@
+CAMBIOS V15 PREMIUM
+
+- Se dejo la aplicacion local trabajando sobre la base V14 indicada.
+- Se integraron las dos plantillas premium reales:
+  Perro - Base Premium.
+  Gato - Base Premium.
+- La plantilla se mantiene simple: una sola seleccion, con sugerencia automatica por especie.
+- El frente de la credencial queda limpio: foto, nombre, raza y titulo personalizado.
+- El reverso conserva PetID, contacto, dueno, ciudad, datos de registro cuando correspondan y QR real.
+- Se corrigio el caso donde aparecia "Sin fotografia" aunque la foto ya existiera.
+- Se agrego ajuste automatico de textos para evitar desbordes en nombre, raza, titulo, dueno, contacto, ciudad y registro.
+- Se conserva el ajuste de foto: zoom, posicion, encuadre y brillo.
+- Se preservan los formatos de impresion: tag mini, estandar 54 x 85.6 mm y Premium XL 81 x 128.4 mm.
+- La entrega queda local/offline, sin servidor y sin dependencias externas.

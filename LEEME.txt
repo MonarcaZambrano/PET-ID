@@ -1,0 +1,14 @@
+PET ID - VERSION LOCAL V15 PREMIUM
+
+Como abrir:
+1. Descomprime el ZIP.
+2. Abre el archivo "ABRIR PET ID - PAGINA LOCAL.html".
+3. Presiona el boton para entrar a la aplicacion.
+
+Esta version funciona de forma local en el computador. No necesita servidor ni internet para crear credenciales de prueba.
+Los datos se guardan en el navegador del computador donde se usa la aplicacion.
+
+Importante:
+- Si se abre en otro computador, empieza con datos nuevos.
+- Para compartir los datos reales entre computadores se necesitara una base de datos en linea, por ejemplo Supabase, en una etapa posterior.
+- Esta entrega incluye las dos plantillas premium: perro y gato.
